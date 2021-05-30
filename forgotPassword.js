@@ -4,16 +4,13 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'turn666to999@gmail.com',
-        pass: 'Joy@10092003'
+        pass: 'replace'
     }
 })
 
 export default async function checkLogin(client, req, res) {
     try {
-        const query = await client.query({
-            text: "SELECT * FROM accounts WHERE email = $1;",
-            values: [req.body.data.email]
-        })
+        const query = await client.query("SELECT * FROM accounts WHERE email = $1;", [req.body.data.email])
 
         if (query.rows.length) {
             const mailOptions = {
@@ -33,9 +30,5 @@ export default async function checkLogin(client, req, res) {
     catch (error) {
         console.error(error)
         res.send(error)
-    }
-    finally {
-        client.release()
-        res.end()
     }
 }

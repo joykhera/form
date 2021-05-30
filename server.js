@@ -1,5 +1,4 @@
 import express from 'express'
-import path from 'path'
 import pg from 'pg'
 import checkUsername from './checkUsername.js'
 import checkEmail from './checkEmail.js'
@@ -13,7 +12,6 @@ const port = process.env.PORT || 3000
 const pool = new pg.Pool({ database: "formUsers" })
 app.use(express.static('./public'))
 app.use(express.json())
-app.get('/', (req, res) => res.sendFile(path.resolve('./public/index.html')))
 app.listen(port, () => console.log(`Server listening at http://localhost:${port}`))
 
 app.post('/', async (req, res) => {
@@ -47,4 +45,6 @@ app.post('/', async (req, res) => {
             resetPassword(client, req, res)
             break;
     }
+    client.release()
+    res.end()
 })
