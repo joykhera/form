@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <link href="index.css" rel="stylesheet">
+    <script src="./index.js" type="module" defer></script>
+</head>
+
+<form id="form" method="post">
+    <div class="container">
+        <h1>Log in</h1>
+        <hr>
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" maxlength="50" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="50"
+            autocomplete="new-password" required>
+
+        <p id="error"></p>
+
+        <button id="submit" type="submit" class="loginbtn">Log in</button>
+        <button id="forgotPassword" type="button" onclick="(() => location.assign('../forgotPassword/index.html'))()"
+            class="forgotPasswordbtn">Forgot Username or Password</button>
+
+    </div>
+</form>
+
+</html>

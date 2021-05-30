@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <link href="index.css" rel="stylesheet">
+    <script src="./index.js" type="module" defer></script>
+</head>
+
+<body>
+    <form id="form" method="post">
+        <div class="container">
+            <h1>Reset Password</h1>
+            <hr>
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" maxlength="50" value="*USERNAME*" disabled>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="50"
+                autocomplete="new-password" required>
+
+            <label for="confirmPassword"><b>Cornfirm Password</b></label>
+            <input type="password" placeholder="Confirm Password" name="confirmPassword" minlength="8" maxlength="50"
+                autocomplete="new-password" required>
+
+            <input id="createdOn" type="hidden" name="created_on">
+            <script> createdOn.value = (new Date()).toString()</script>
+
+            <p id="message"></p>
+            <p id="error"></p>
+
+            <button id="submit" type="submit" class="signupbtn">Reset Password</button>
+            <button id="logIn" type="button" onclick="(() => location.assign('../logIn/index.html'))()"
+                class="logInbtn">Return to Login page</button>
+
+        </div>
+    </form>
+</body>
+
+</html>
