@@ -9,4 +9,7 @@ export default async function resetPassword(client, req, res) {
         console.error(error)
         res.send(error.message)
     }
+    finally {
+        client.release()
+    }
 }

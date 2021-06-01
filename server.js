@@ -1,7 +1,6 @@
 import express from 'express'
 import pg from 'pg'
-import checkUsername from './checkUsername.js'
-import checkEmail from './checkEmail.js'
+import checkDistinct from './checkDistinct.js'
 import insert from './insert.js'
 import checkLogin from './checkLogin.js'
 import forgotPassword from './forgotPassword.js'
@@ -12,39 +11,24 @@ const port = process.env.PORT || 3000
 const pool = new pg.Pool({ database: "formUsers" })
 app.use(express.static('./public'))
 app.use(express.json())
-app.listen(port, () => console.log(`Server listening at http://localhost:${port}`))
+app.listen(port)
 
-app.post('/', async (req, res) => {
-    const client = await pool.connect()
-    switch (req.body.state) {
-        case 'signUp':
-            switch (req.body.check) {
-                case 'username':
-                    checkUsername(client, req, res)
-                    break;
-
-                case 'email':
-                    checkEmail(client, req, res)
-                    break;
-
-                case 'submit':
-                    insert(client, req, res)
-                    break;
-            }
+app.post('/signUp', async (req, res) => {
+    switch (req.body.check) {
+        case 'username':
+            checkDistinct(await pool.connect(), req, res, 'username')
             break;
 
-        case 'logIn':
-            checkLogin(client, req, res)
+        case 'email':
+            checkDistinct(await pool.connect(), req, res, 'email')
             break;
 
-        case 'forgotPassword':
-            forgotPassword(client, req, res)
-            break;
-
-        case 'resetPassword':
-            resetPassword(client, req, res)
+        case 'submit':
+            insert(await pool.connect(), req, res)
             break;
     }
-    client.release()
-    res.end()
 })
+
+app.post('/logIn', async (req, res) => checkLogin(await pool.connect(), req, res))
+app.post('/forgotPassword', async (req, res) => forgotPassword(await pool.connect(), req, res))
+app.post('/resetPassword', async (req, res) => resetPassword(await pool.connect(), req, res))

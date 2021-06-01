@@ -1,38 +1,45 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <link href="../index.css" rel="stylesheet">
     <script src="./index.js" type="module" defer></script>
     <script src="./checkUsername.js" type="module" defer></script>
     <script src="./checkEmail.js" type="module" defer></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
-<form id="form" method="post">
-    <div class="container">
-        <h1>Sign Up</h1>
-        <hr>
+<body>
+    <form id="form" method="post">
+        <div class="container">
+            <h1>Sign Up</h1>
+            <hr>
 
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" maxlength="50" required>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" maxlength="50" required>
 
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" maxlength="225" autocomplete="email" required>
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" name="email" maxlength="225" autocomplete="email" required>
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="50"
-            autocomplete="new-password" required>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="50"
+                autocomplete="new-password" required>
 
-        <label for="confirmPassword"><b>Cornfirm Password</b></label>
-        <input type="password" placeholder="Confirm Password" name="confirmPassword" minlength="8" maxlength="50"
-            autocomplete="new-password" required>
+            <label for="confirmPassword"><b>Cornfirm Password</b></label>
+            <input type="password" placeholder="Confirm Password" name="confirmPassword" minlength="8" maxlength="50"
+                autocomplete="new-password" required>
 
-        <input id="createdOn" type="hidden" name="created_on">
-        <script> createdOn.value = (new Date()).toString()</script>
+            <input id="createdOn" type="hidden" name="created_on">
+            <script> createdOn.value = (new Date()).toString()</script>
 
-        <p id="error"></p>
-        <button id="submit" type="submit" class="signupbtn">Sign Up</button>
+            <p id="error"></p>
+            <button id="submit" type="submit" class="signupbtn">Sign Up</button>
 
-    </div>
-</form>
+        </div>
+    </form>
+</body>
 
 </html>

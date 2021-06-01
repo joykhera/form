@@ -31,4 +31,7 @@ export default async function checkLogin(client, req, res) {
         console.error(error)
         res.send(error)
     }
+    finally {
+        client.release()
+    }
 }
