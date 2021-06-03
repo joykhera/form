@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
+    <script>window.a = 'a'</script>
     <link href="../index.css" rel="stylesheet">
-    <script src="./index.js" type="module" defer></script>
-    <script src="./checkUsername.js" type="module" defer></script>
-    <script src="./checkEmail.js" type="module" defer></script>
+    <script src="./index.js" type="module"></script>
+    <script src="./checkUsername.js" type="module"></script>
+    <script src="./checkEmail.js" type="module"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +35,9 @@
 
             <input id="createdOn" type="hidden" name="created_on">
             <script> createdOn.value = (new Date()).toString()</script>
+
+            <input id="resetKey" type="hidden" name="reset_key">
+            <script> resetKey.value = Math.random().toString(36).substring(2)</script>
 
             <p id="error"></p>
             <button id="submit" type="submit" class="signupbtn">Sign Up</button>

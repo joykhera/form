@@ -6,11 +6,7 @@ document.getElementById('form').addEventListener('submit', async function (event
         let response = await fetch('/signUp', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                state: 'signUp',
-                check: 'submit',
-                data: formDataEntries
-            })
+            body: JSON.stringify(formDataEntries)
         })
         response = await response.text()
 

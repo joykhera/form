@@ -5,12 +5,8 @@ document.getElementById('form').addEventListener('submit', async function (event
     let response = await fetch('/forgotPassword', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            state: 'forgotPassword',
-            data: formDataEntries
-        })
+        body: JSON.stringify(formDataEntries)
     })
-    console.log(response)
     response = await response.text()
 
     if (response == 'Email not found') document.getElementById("error").innerHTML = response

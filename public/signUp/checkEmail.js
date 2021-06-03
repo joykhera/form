@@ -1,10 +1,9 @@
 document.getElementsByName('email')[0].addEventListener('input', async function () {
     const email = this.value;
-    let response = await fetch(location.origin, {
+    let response = await fetch('/checkDistinct', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            state: 'signUp',
             check: 'email',
             data: email
         })

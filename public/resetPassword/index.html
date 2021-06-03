@@ -3,7 +3,7 @@
 
 <head>
     <link href="../index.css" rel="stylesheet">
-    <script src="./index.js" type="module" defer></script>
+    <script src="./index.js" type="module"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
             <hr>
 
             <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" maxlength="50" value="*USERNAME*" disabled>
+            <input type="text" placeholder="Enter Username" name="username" maxlength="50" value="*USERNAME*">
 
             <label for="password"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" minlength="8" maxlength="50"
@@ -26,9 +26,6 @@
             <label for="confirmPassword"><b>Cornfirm Password</b></label>
             <input type="password" placeholder="Confirm Password" name="confirmPassword" minlength="8" maxlength="50"
                 autocomplete="new-password" required>
-
-            <input id="createdOn" type="hidden" name="created_on">
-            <script> createdOn.value = (new Date()).toString()</script>
 
             <p id="message"></p>
             <p id="error"></p>

@@ -1,17 +1,13 @@
-console.log(location.origin)
 document.getElementById('form').addEventListener('submit', async function (event) {
     event.preventDefault()
     const formDataEntries = Object.fromEntries(new FormData(this))
+    console.log(formDataEntries)
     let response = await fetch('/logIn', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            state: 'logIn',
-            data: formDataEntries
-        })
+        body: JSON.stringify(formDataEntries)
     })
     response = await response.text()
-    console.log(response)
 
     switch (response) {
         case 'duplicate key value violates unique constraint "accounts_username_key"':
